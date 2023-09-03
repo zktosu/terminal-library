@@ -6,7 +6,8 @@ con = sqlite3.connect(DB_NAME)
 books_table = """
 CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT,
 author TEXT NOT NULL,
-title TEXT NOT NULL
+title TEXT NOT NULL,
+is_issued BOOLEAN 
 )
 """
 con.execute(books_table)

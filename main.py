@@ -1,20 +1,21 @@
 from simple_term_menu import TerminalMenu
 import sqlite3
 def main():
-	options = ["Add Book", "Delete Book", "List Books"]
+	options = ["Add Book", "Delete Book", "List Books","Issue Book"]
 	terminal_menu = TerminalMenu(options)
-	con = sqlite3.connect("database.db")	
+	con = sqlite3.connect("database.db")
 	cur = con.cursor()
 	while True:	
 		selected_index = terminal_menu.show()
 		if selected_index is None:
+			con.close()
 			break
 		if selected_index == 0:
 			# insert item into database.
 			title= input("title ")
 			author = input("author ")
-			stmt = ''' INSERT INTO books(title,author) VALUES(?,?);'''
-			cur.execute(stmt,(title, author))
+			stmt = ''' INSERT INTO books(title,author,is_issued) VALUES(?,?,?);'''
+			cur.execute(stmt,(title, author,"FALSE"))
 			con.commit()
 		if selected_index == 1:
 			title = input("enter title to delete ")
@@ -26,6 +27,11 @@ def main():
 			cur.execute(stmt)
 			f = open("printout","w")
 			for item in cur.fetchall():
-				f.write("%s %s\n" % (item[1],item[2]))
+				f.write("%s %s %s\n" % (item[1],item[2],item[3]))
+		if selected_index == 3:
+			name_to = input("name to issue ")
+			stmt = ''' update books set is_issued = "TRUE" where title= ?'''
+			cur.execute(stmt,(name_to,))
+			con.commit()
 if __name__ == "__main__":
 	main()
