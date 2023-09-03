@@ -6,7 +6,13 @@ def main():
 	selected_index = terminal_menu.show()
 	# selected menu is index number,
 	# if esc pressed then value is None
-	print(f"seçilen menu index i {selected_index}")
+	# print(f"seçilen menu index i {selected_index}")
+	if selected_index == 0:
+		print("added book")
+	if selected_index == 1:
+		print("deleted the book")
+	if selected_index == 2:
+		print("book issued")
 
 if __name__ == "__main__":
 	main()
