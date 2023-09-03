@@ -10,5 +10,6 @@ title TEXT NOT NULL,
 is_issued BOOLEAN 
 )
 """
-con.execute(books_table)
-
+cur = con.cursor()
+cur.execute(books_table)
+con.close()
