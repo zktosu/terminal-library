@@ -27,7 +27,7 @@ def main():
 			cur.execute(stmt)
 			f = open("printout","w")
 			for item in cur.fetchall():
-				f.write("%s %s %s\n" % (item[1],item[2],item[3]))
+				print(item[1], item[2],item[3])
 		if selected_index == 3:
 			name_to = input("name to issue ")
 			stmt = ''' update books set is_issued = "TRUE" where title= ?'''
