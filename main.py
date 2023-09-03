@@ -2,7 +2,7 @@ from simple_term_menu import TerminalMenu
 import sqlite3
 def main():
 	options = ["Add Book", "Delete Book", "List Books","Issue Book"]
-	terminal_menu = TerminalMenu(options)
+	terminal_menu = TerminalMenu(options,title="Commands")
 	con = sqlite3.connect("database.db")
 	cur = con.cursor()
 	while True:	
