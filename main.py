@@ -25,7 +25,7 @@ def main():
 		if selected_index == 2:
 			stmt = ''' select * from books '''
 			cur.execute(stmt)
-			f = open("printout","w")
+			print("-"*80)
 			for item in cur.fetchall():
 				print(item[1], item[2],item[3])
 		if selected_index == 3:
