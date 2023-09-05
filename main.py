@@ -27,7 +27,7 @@ def main():
 			cur.execute(stmt)
 			print("-"*80)
 			for item in cur.fetchall():
-				print(item[1], item[2],item[3])
+				print(item[0],item[1], item[2],item[3])
 		if selected_index == 3:
 			name_to = input("name to issue ")
 			stmt = ''' update books set is_issued = "TRUE" where title= ?'''
